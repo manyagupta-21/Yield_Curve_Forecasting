@@ -22,8 +22,6 @@ Forecasting interest rates one month ahead is famously hard: the random walk is 
 
 Random Walk, ARIMA, ARIMAX, VAR (differenced), Dynamic Nelson-Siegel (AR and VAR variants).
 
-**VECM was evaluated in an earlier iteration and dropped.** A Johansen cointegration test found rank 4 among the six yields, but VECM added no benefit over VAR-in-differences at one-step-ahead and is excluded from related literature this project follows (Ayliffe and Rubin, EPFL, "A Quantitative Comparison of Yield Curve Models in the MINT Economies," which restricts to RW/AR/VAR/DNS for the same reason).
-
 ## Evaluation protocol
 
 - Walk-forward, expanding window, one-step-ahead. Every model is refit at each step on data up to time t and forecasts t+1.
@@ -42,7 +40,7 @@ Random Walk, ARIMA, ARIMAX, VAR (differenced), Dynamic Nelson-Siegel (AR and VAR
 | 2Y | VAR-diff | 0.303 | 0.307 | 1.4% |
 | 5Y | DNS-AR | 0.304 | 0.308 | 1.2% |
 | 10Y | DNS-AR | 0.265 | 0.281 | 5.6% |
-| 30Y | Random Walk | 0.249 | n/a | RW wins outright |
+| 30Y | Random Walk | 0.249 | 0.249 | 0.0% |
 
 **Statistical significance: the honest finding.** After Diebold-Mariano testing with FDR correction across maturities, none of the apparent RMSE gains above are statistically significant at one-month-ahead. This is consistent with the term-structure forecasting literature: beating the random walk one-step-ahead is genuinely difficult, and a correctly-hedged negative result here is more informative than an overstated win.
 
